@@ -1,3 +1,4 @@
+<!-- Class 16 Studio -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +11,11 @@
                   
         fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response){
           response.json().then(function(json) {
-            
+            console.log(json);
+           
+           //json.sort((a,b) => (a.hoursInSpace > b.hoursInSpace) ?1: -1);           
+           json.sort((a, b) => (a.hoursInSpace - b.hoursInSpace));
+           
             const container = document.getElementById("container");
             for (let i=0; i<json.length; i++){
 
@@ -20,7 +25,7 @@
                       <h3>${json[i].firstName} ${json[i].lastName}</h3>               
                     <ul>
                         <li>Hours in space: ${json[i].hoursInSpace}</li>
-                        <li>Active: ${json[i].active}</li>
+                        <li Class="activeText">Active: ${json[i].active}</li>
                         <li>Skills: ${json[i].skills}</li>                      
                     </ul>
                     </div>
